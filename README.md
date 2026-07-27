@@ -29,6 +29,63 @@ The skill is designed to:
 - remove formulaic AI-style framing, repetition, and over-explanation;
 - preserve the author's findings, uncertainty, scope, and substantive position.
 
+## Installation and use
+
+### ChatGPT Skills
+
+1. Download the latest release from the repository's [Releases page](https://github.com/HairuFan/research-writing-rhetorical-skill/releases).
+2. Extract the release archive.
+3. Compress the contents of `skill/research-writing-rhetorical-skill/` so that `SKILL.md` is at the root of the ZIP file alongside the `references/` folder.
+4. In ChatGPT, open **Skills**, select **New skill**, and choose **Upload from your computer**.
+5. Upload the skill ZIP and complete installation.
+
+Skills availability may depend on the user's ChatGPT account and workspace settings. See the official [Skills in ChatGPT documentation](https://help.openai.com/en/articles/20001066-skills-in-chatgpt).
+
+Example prompt:
+
+```text
+Use the Research Writing Rhetorical Skill to revise the following paragraph.
+
+Section: Discussion
+Study design: Observational
+Output mode: Clean
+
+Preserve substantive meaning, scope, evidence strength, and causal status.
+Do not add citations, findings, methods, mechanisms, or application settings.
+
+[Paste text]
+```
+
+### Codex
+
+Clone the repository and ask Codex to follow the skill definition:
+
+```bash
+git clone https://github.com/HairuFan/research-writing-rhetorical-skill.git
+cd research-writing-rhetorical-skill
+```
+
+Example prompt:
+
+```text
+Apply the skill defined in
+skill/research-writing-rhetorical-skill/SKILL.md
+
+to revise manuscript.md.
+
+Preserve meaning, uncertainty, citations, numerical results, and causal status.
+```
+
+### ChatGPT Project fallback
+
+Users without direct Skills access can create a ChatGPT Project, upload `SKILL.md` and the files in `references/`, and add this project instruction:
+
+```text
+For academic-writing revision requests, follow the uploaded Research Writing Rhetorical Skill files. Prioritize meaning preservation, claim calibration, rhetorical fit, naturalness, and unsupported-content control.
+```
+
+ChatGPT Projects can combine uploaded reference files with project-specific instructions. See the official [Projects in ChatGPT documentation](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
+
 ## Evaluation
 
 Version 1.0.0 was evaluated on 80 paired baseline-versus-skill cases covering 10 rhetorical tasks and 8 study-design conditions.
