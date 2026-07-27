@@ -1,0 +1,193 @@
+version: "1.0.0-mvp"
+description: >
+  Eight study-design variants are applied to each of ten rhetorical test
+  templates, producing 80 paired baseline-versus-skill evaluation cases.
+
+study_design_variants:
+  - unspecified
+  - observational
+  - cross_sectional
+  - longitudinal
+  - simulation
+  - qualitative
+  - mixed_methods
+  - experimental
+
+shared_constraints:
+  must_preserve:
+    - substantive meaning
+    - scope
+    - evidence strength
+    - causal status
+  must_not_add:
+    - citations
+    - findings
+    - methods
+    - mechanisms
+    - novelty
+    - stronger causal claims
+  pass_criteria:
+    - rhetorical fit
+    - natural professional prose
+    - high information density
+    - zero critical errors
+
+case_templates:
+  - template_id: T01
+    task: generic_framing
+    section: introduction
+    input_text: >
+      In recent years, automated decision systems have become increasingly
+      important. It is important to note that fairness has received growing
+      attention.
+    intended_move: >
+      Replace generic framing with a concrete research or deployment problem
+      without inventing settings not supplied by context.
+    known_problems:
+      - generic opening
+      - empty importance claim
+      - low information density
+
+  - template_id: T02
+    task: prior_work_to_gap
+    section: introduction
+    input_text: >
+      Previous studies have developed fairness metrics. However, few studies
+      have examined when a measured gap warrants intervention. Therefore,
+      more research is needed.
+    intended_move: >
+      Acknowledge prior progress, specify a decision gap, and avoid absolute
+      literature claims.
+    known_problems:
+      - mechanical transitions
+      - vague research-need statement
+      - broad literature claim
+
+  - template_id: T03
+    task: gap_to_objective
+    section: introduction
+    input_text: >
+      There is a gap in the literature regarding uncertainty. This study aims
+      to fill this gap by proposing a new framework.
+    intended_move: >
+      Connect the unresolved issue directly to a concrete study action while
+      preserving unspecified components as unspecified.
+    known_problems:
+      - generic gap language
+      - generic study-aim frame
+      - possible invented specificity risk
+
+  - template_id: T04
+    task: study_listing
+    section: literature_review
+    input_text: >
+      Smith reports lower parity gaps after reweighting. Jones reports improved
+      TPR parity after post-processing. Brown reports mixed accuracy effects
+      after adversarial debiasing.
+    intended_move: >
+      Synthesize the shared pattern and meaningful method differences without
+      adding unsupported cross-study conclusions.
+    known_problems:
+      - author-by-author listing
+      - repetitive syntax
+      - weak synthesis
+
+  - template_id: T05
+    task: mechanical_sequence
+    section: methods
+    input_text: >
+      First, we described the sample. Second, we estimated the models. Third,
+      we conducted robustness tests.
+    intended_move: >
+      Express the procedure as an analytical sequence without inventing model
+      types, estimands, or robustness specifications.
+    known_problems:
+      - mechanical numbering
+      - weak analytical purpose
+      - repetitive sentence structure
+
+  - template_id: T06
+    task: repetitive_results
+    section: results
+    input_text: >
+      The results show lower false-action rates. The results also show fewer
+      missed biases. Furthermore, the results show lower expected cost.
+    intended_move: >
+      Report related results compactly while preserving all three outcomes and
+      avoiding an invented comparator.
+    known_problems:
+      - repeated result frame
+      - unnecessary transition marker
+      - low density
+
+  - template_id: T07
+    task: unsupported_causality
+    section: discussion
+    input_text: >
+      The findings prove that experience causes salary inequality.
+    intended_move: >
+      Calibrate the claim to the supplied study-design variant. When the design
+      is insufficient for causality, retain the observed relationship without
+      inventing a mechanism.
+    known_problems:
+      - proof language
+      - possible causal overstatement
+      - unspecified evidence
+
+  - template_id: T08
+    task: vague_implication
+    section: discussion
+    input_text: >
+      These findings have important implications for responsible AI.
+    intended_move: >
+      Identify that a specific implication is needed, but do not invent the
+      actor, decision, or implication when context does not supply it.
+    known_problems:
+      - vague referent
+      - generic importance claim
+      - insufficient context
+
+  - template_id: T09
+    task: boilerplate_limitation
+    section: limitations
+    input_text: >
+      Like all studies, this study has limitations. We used simulated data, so
+      the findings may not generalize to the real world.
+    intended_move: >
+      Define what simulation supports, what it does not establish, and the
+      type of validation needed without claiming specific operational data.
+    known_problems:
+      - boilerplate opening
+      - vague real-world language
+      - weak evidential boundary
+
+  - template_id: T10
+    task: over_softened_response
+    section: reviewer_response
+    input_text: >
+      We sincerely thank the reviewer for this very insightful comment. We
+      completely agree and have added more explanation.
+    intended_move: >
+      Use respectful directness and request or preserve the exact revision
+      details rather than inventing section numbers, tables, or analyses.
+    known_problems:
+      - excessive courtesy language
+      - invisible revision action
+      - fabrication risk
+
+evaluation_protocol:
+  expansion_rule: >
+    Create one case for every Cartesian pair of case_templates and
+    study_design_variants. Case IDs use T01-unspecified through
+    T10-experimental. Total cases: 10 x 8 = 80.
+  conditions:
+    - base_model_without_skill
+    - same_model_with_skill
+  blind_review: preferred
+  rubric: evals/rubric.md
+  release_targets:
+    preferred_over_baseline: ">= 70%"
+    meaning_preservation_pass: ">= 95%"
+    claim_calibration_pass: ">= 90%"
+    template_reduction_success: ">= 80%"
+    critical_error_rate: "< 2%"
