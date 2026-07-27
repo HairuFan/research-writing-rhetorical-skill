@@ -1,0 +1,100 @@
+name: User feedback
+description: Share your experience using the Research Writing Rhetorical Skill
+title: "[Feedback] "
+body:
+  - type: dropdown
+    id: section
+    attributes:
+      label: Manuscript section or task
+      description: Where did you use the skill?
+      options:
+        - Abstract
+        - Introduction
+        - Literature review
+        - Theory
+        - Methods
+        - Results
+        - Discussion
+        - Limitations
+        - Conclusion
+        - Reviewer response
+        - Paragraph transition
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to improve?
+      description: Briefly describe the writing problem or rhetorical goal.
+      placeholder: For example, calibrating a causal claim or improving a transition between two paragraphs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked well?
+      description: Describe any improvements in clarity, flow, claim calibration, concision, or naturalness.
+    validations:
+      required: true
+
+  - type: textarea
+    id: issues
+    attributes:
+      label: What did not work well?
+      description: Note any awkward wording, meaning drift, unsupported detail, over-compression, or remaining template language.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: preservation
+    attributes:
+      label: Was the original meaning preserved?
+      options:
+        - Yes
+        - Mostly
+        - No
+        - Unsure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: claim_strength
+    attributes:
+      label: Was the original claim strength preserved?
+      description: Consider causal status, uncertainty, scope, and evidential boundaries.
+      options:
+        - Yes
+        - Mostly
+        - No
+        - Not applicable
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Optional before/after example
+      description: Only share text that you have permission to post. Remove confidential or identifying information.
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggestion for a future version
+      description: What should the skill handle differently or support next?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed confidential manuscripts, unpublished findings, reviewer-confidential material, personal data, and restricted text.
+          required: true
