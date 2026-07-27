@@ -1,0 +1,18 @@
+status: frozen_for_evaluation
+skill_version: 1.0.0-mvp
+benchmark_version: 1.0.0-mvp
+frozen_branch: v1.0.0-mvp-eval-freeze
+source_branch: v1-foundation-mvp
+freeze_date: 2026-07-26
+model_for_full_benchmark: Claude Sonnet 5
+planned_full_benchmark_cases: 80
+pilot_smoke_test_cases: 10
+pilot_result:
+  skill_preferred: 8
+  ties: 2
+  baseline_preferred: 0
+  skill_critical_failures: 0
+policy:
+  - Do not modify the skill on this branch before completing the full benchmark.
+  - Record all full-run outputs against this frozen branch and version.
+  - Treat the pilot as internal evidence, not comprehensive validation.
