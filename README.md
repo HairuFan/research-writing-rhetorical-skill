@@ -44,6 +44,20 @@ The skill won 67.19% of non-tied decisions and had a 73.75% non-loss rate. Evalu
 
 The strongest gains appeared in claim calibration, evidential-boundary writing, gap-to-objective transitions, reviewer responses, and template reduction. Known limitations include occasional boilerplate substitution, unsupported narrowing, overuse of contrast markers, and loss of parallel structure. See the [v1.0.0 evaluation report](evals/results/v1.0.0-evaluation-report.md).
 
+## Share your experience
+
+Used the skill on a manuscript paragraph, literature review, limitation, discussion, or reviewer response? Share what worked, what remained awkward, and whether the original meaning and claim strength were preserved.
+
+Use the [user feedback issue template](https://github.com/HairuFan/research-writing-rhetorical-skill/issues/new?template=user-feedback.yml) to report:
+
+- the manuscript section or writing task;
+- what improved;
+- what did not work well;
+- whether meaning, scope, and evidential strength were preserved;
+- an optional before/after example that you are permitted to share.
+
+Do not post confidential manuscripts, unpublished findings, reviewer-confidential material, personal data, or copyrighted text that you do not have permission to share.
+
 ## Files
 
 - [`SKILL.md`](skill/research-writing-rhetorical-skill/SKILL.md)
