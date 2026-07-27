@@ -10,7 +10,7 @@ description: >
 license: Apache-2.0
 metadata:
   author: Hairu Fan
-  version: "1.0.0-mvp"
+  version: "1.0.0"
 ---
 
 # Research Writing Rhetorical Skill
