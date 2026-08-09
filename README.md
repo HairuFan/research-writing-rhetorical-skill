@@ -86,6 +86,89 @@ For academic-writing revision requests, follow the uploaded Research Writing Rhe
 
 ChatGPT Projects can combine uploaded reference files with project-specific instructions. See the official [Projects in ChatGPT documentation](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
 
+## Claude / Model Compatibility
+
+This repository follows the core Anthropic Agent Skills pattern: a self-contained skill directory with an uppercase `SKILL.md`, YAML frontmatter containing `name` and `description`, and supporting files in `references/`. Anthropic describes Agent Skills as portable folders of instructions and resources that Claude can discover and load when relevant.
+
+### Claude Code
+
+Claude Code can use the skill either directly from this repository or as a project-scoped/user-scoped Agent Skill.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/HairuFan/research-writing-rhetorical-skill.git
+cd research-writing-rhetorical-skill
+```
+
+For a project-scoped installation, copy the skill directory into the project's `.claude/skills/` directory:
+
+```bash
+mkdir -p .claude/skills
+cp -R skill/research-writing-rhetorical-skill .claude/skills/research-writing-rhetorical-skill
+```
+
+For a user-scoped installation, copy it into `~/.claude/skills/`:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R skill/research-writing-rhetorical-skill ~/.claude/skills/research-writing-rhetorical-skill
+```
+
+Start a new Claude Code session after installation so the skill can be discovered.
+
+Example invocation:
+
+```text
+Use the Research Writing Rhetorical Skill to revise the following Discussion paragraph.
+
+Study design: observational
+Output mode: clean
+
+Preserve substantive meaning, uncertainty, scope, citations, and causal status.
+Do not invent findings, mechanisms, methods, novelty, or application settings.
+
+[Paste text]
+```
+
+For repository files:
+
+```text
+Apply the Research Writing Rhetorical Skill to manuscript.md.
+
+Audit:
+- rhetorical coherence
+- claim calibration
+- unsupported specificity
+- template repetition
+- meaning preservation
+
+Do not change numerical results or citations.
+```
+
+The filename must remain exactly `SKILL.md`. The `name` and `description` metadata help Claude determine when the skill is relevant.
+
+Anthropic currently supports Agent Skills across Claude.ai, Claude Code, the Claude Agent SDK, and the Claude Developer Platform. See Anthropic's [Agent Skills overview](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) and the [Anthropic Skills repository](https://github.com/anthropics/skills).
+
+### Model compatibility and evaluation scope
+
+The skill is designed to be model-agnostic at the instruction layer, but model behavior can vary.
+
+**Empirically evaluated:**
+
+- Claude Sonnet 5 — used as the generator in the v1.0.0 paired benchmark.
+
+**Supported usage patterns:**
+
+- Claude Code / Agent Skills;
+- Claude.ai custom skills where available;
+- Claude API / Agent SDK workflows that support Agent Skills;
+- ChatGPT Skills;
+- Codex;
+- project or agent environments that can load `SKILL.md` and its reference files.
+
+The published v1.0.0 benchmark results apply to the evaluated Claude Sonnet 5 generation setup. They should not be assumed to generalize unchanged to every Claude model, ChatGPT model, or agent environment. Cross-model validation is a planned direction for future releases.
+
 ## Evaluation
 
 Version 1.0.0 was evaluated on 80 paired baseline-versus-skill cases covering 10 rhetorical tasks and 8 study-design conditions.
